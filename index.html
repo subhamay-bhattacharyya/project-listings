@@ -17,6 +17,8 @@
             --card-background: #ffffff;
             --text-color: #333333;
             --border-color: #dddddd;
+            --border-radius-sm: 4px;
+            --transition-fast: 0.2s;
         }
 
         * {
@@ -159,6 +161,29 @@
             background-color: #FFC107;
             color: black;
         }
+
+        .tech-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .aws-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Optional: Add a subtle hover effect */
+        .tech-badge:hover {
+            background-color: var(--primary-color);
+            transition: background-color var(--transition-fast);
+        }
     </style>
 </head>
 <body>
@@ -171,15 +196,198 @@
             <div class="tree-menu">
                 <div class="tree-parent">AWS Core Services</div>
                 <div class="tree-content">
-                    <div class="project-card">
+                    <div class="project-category">
                         <h3>AWS Networking Immersion Day</h3>
-                        <a href="#" class="project-link">View Project</a>
-                        <span class="status-badge complete">Complete</span>
-                    </div>
-                    <div class="project-card">
-                        <h3>AWS Storage Workshop</h3>
-                        <a href="#" class="project-link">View Project</a>
-                        <span class="status-badge in-progress">In Progress</span>
+                        <div class="project-grid">
+                            <!-- Project 0101 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0101</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>VPC Fundamentals</h4>
+                                <p class="project-description">Implementation of basic VPC concepts and fundamentals</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0101-networking-cft" class="repo-link">
+                                        0101-networking-cft
+                                        <span class="status-badge status-complete">Complete</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0102 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0102</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>Multiple VPCs</h4>
+                                <p class="project-description">Setup and configuration of multiple VPC environments</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0102-networking-cft" class="repo-link">
+                                        0102-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0103 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0103</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>Security Controls</h4>
+                                <p class="project-description">Implementation of VPC security controls and best practices</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0103-networking-cft" class="repo-link">
+                                        0103-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0104 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0104</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>Connecting to On-Premises</h4>
+                                <p class="project-description">Hybrid connectivity setup with on-premises infrastructure</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0104-networking-cft" class="repo-link">
+                                        0104-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0105 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0105</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>Networking Monitoring</h4>
+                                <p class="project-description">VPC monitoring and observability implementation</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0105-networking-cft" class="repo-link">
+                                        0105-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0106 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0106</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>AWS Gateway Load Balancer</h4>
+                                <p class="project-description">Implementation of Gateway Load Balancer for network traffic management</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0106-networking-cft" class="repo-link">
+                                        0106-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0107 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0107</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>AWS Transit Gateway Multicast</h4>
+                                <p class="project-description">Setup of Transit Gateway with multicast functionality</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0107-networking-cft" class="repo-link">
+                                        0107-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0108 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0108</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>AWS VPC with private only subnets</h4>
+                                <p class="project-description">VPC configuration with private subnet architecture</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0108-networking-cft" class="repo-link">
+                                        0108-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0109 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">0109</span>
+                                    <span class="tech-badge">
+                                        <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                        </svg>
+                                        CloudFormation
+                                    </span>
+                                </div>
+                                <h4>AWS VPC with public and private subnets</h4>
+                                <p class="project-description">VPC setup with both public and private subnet architecture</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0109-networking-cft" class="repo-link">
+                                        0109-networking-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
