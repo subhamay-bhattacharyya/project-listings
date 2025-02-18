@@ -38,6 +38,34 @@
             --glue-text: #2D1421;        /* Dark text */
             --glue-border: #FFD6EC;      /* Light pink border */
             --vpc-card-bg: #F8FAFF;
+            /* Redshift Theme Colors */
+            --redshift-primary: #4D27AA;     /* Redshift purple */
+            --redshift-secondary: #351C77;   /* Darker purple */
+            --redshift-accent: #8A63E8;      /* Light purple */
+            --redshift-background: #F7F5FF;  /* Very light purple background */
+            --redshift-text: #1A0F33;        /* Dark purple text */
+            --redshift-border: #E0D6FF;      /* Light purple border */
+            /* Athena Theme Colors */
+            --athena-primary: #00A1C9;     /* Athena blue */
+            --athena-secondary: #007A99;   /* Darker blue */
+            --athena-accent: #66D1E7;      /* Light blue */
+            --athena-background: #F0FBFF;  /* Very light blue background */
+            --athena-text: #003D4D;        /* Dark blue text */
+            --athena-border: #B3E7F2;      /* Light blue border */
+            /* Lambda Theme Colors */
+            --lambda-primary: #FF9900;      /* Lambda orange */
+            --lambda-secondary: #CC7A00;    /* Darker orange */
+            --lambda-accent: #FFB84D;       /* Light orange */
+            --lambda-background: #FFF8F0;   /* Very light orange background */
+            --lambda-text: #332B00;         /* Dark orange text */
+            --lambda-border: #FFE0B3;       /* Light orange border */
+            /* Step Functions Theme Colors */
+            --stepfunctions-primary: #CD2264;     /* Step Functions pink */
+            --stepfunctions-secondary: #A01B4F;   /* Darker pink */
+            --stepfunctions-accent: #FF6B9F;      /* Light pink */
+            --stepfunctions-background: #FFF0F5;  /* Very light pink background */
+            --stepfunctions-text: #4D0F26;        /* Dark pink text */
+            --stepfunctions-border: #FFB3CD;      /* Light pink border */
         }
 
         * {
@@ -300,7 +328,7 @@
         /* Updated styles for the Networking section */
         .networking-section {
             background-color: var(--vpc-background);
-            background-image: url('../media/Virtual Private Cloud.svg');
+            background-image: url('media/Virtual Private Cloud.svg');
             background-repeat: no-repeat;
             background-position: right bottom;
             background-size: 300px;
@@ -472,6 +500,665 @@
             background-size: contain;
             opacity: 0.3;
             transition: all var(--transition-normal);
+        }
+
+        /* Enhanced h5 Styles with Reflection */
+        h5 {
+            font-weight: 700;
+            color: var(--vpc-text);
+            text-shadow: 1px 1px 2px rgba(46, 115, 184, 0.1);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Reflection Effect */
+        h5::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            bottom: -20px;
+            transform: scaleY(-0.3) translateY(-100%);
+            background: linear-gradient(
+                to bottom,
+                rgba(46, 115, 184, 0.1),
+                transparent
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.3;
+            filter: blur(0.5px);
+        }
+
+        /* Hover Effects */
+        h5:hover {
+            color: var(--vpc-primary);
+            text-shadow: 2px 2px 4px rgba(46, 115, 184, 0.15);
+            transition: all var(--transition-normal);
+        }
+
+        /* AWS Glue Theme Colors */
+        :root {
+            --glue-primary: #E93CAC;     /* Glue pink */
+            --glue-secondary: #B42E84;   /* Darker pink */
+            --glue-accent: #FF99D6;      /* Light pink */
+            --glue-background: #FFF5FA;  /* Very light pink background */
+            --glue-text: #2D1421;        /* Dark text */
+            --glue-border: #FFD6EC;      /* Light pink border */
+        }
+
+        /* Glue Section Styling (matching VPC structure) */
+        .glue-section {
+            background-color: var(--glue-background);
+            background-image: url('../media/Glue.svg');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 300px;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-lg) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glue-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                var(--glue-background) 30%,
+                rgba(255, 245, 250, 0.95) 100%
+            );
+            pointer-events: none;
+        }
+
+        .glue-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .glue-section .project-card {
+            background: var(--vpc-card-bg);
+            border: 1px solid var(--glue-border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glue-section .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(233, 60, 172, 0.15);
+            border-color: var(--glue-accent);
+            background: linear-gradient(135deg, var(--glue-background) 0%, #FFFFFF 100%);
+        }
+
+        .glue-section .project-card::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-image: url('media/Glue.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.3;
+            transition: all var(--transition-normal);
+        }
+
+        .glue-section .project-card:hover::after {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+
+        .glue-section .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .glue-section .project-code {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--glue-primary);
+            background: linear-gradient(135deg, rgba(233, 60, 172, 0.1) 0%, rgba(233, 60, 172, 0.05) 100%);
+            padding: 4px 12px;
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 2px 4px rgba(233, 60, 172, 0.1);
+        }
+
+        .glue-section h5 {
+            color: var(--glue-text);
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(233, 60, 172, 0.1);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .glue-section .project-description {
+            color: var(--glue-secondary);
+            font-size: 0.95rem;
+            margin: var(--spacing-sm) 0;
+        }
+
+        .glue-section .project-footer {
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-sm);
+            border-top: 1px solid var(--glue-border);
+        }
+
+        .glue-section .repo-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--glue-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-normal);
+        }
+
+        .glue-section .repo-link:hover {
+            color: var(--glue-primary);
+        }
+
+        .glue-section .status-badge {
+            padding: 2px 8px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8em;
+        }
+
+        .glue-section .status-progress {
+            background-color: var(--glue-accent);
+            color: var(--glue-text);
+        }
+
+        .glue-section .expand-btn {
+            color: var(--glue-primary);
+            border-color: var(--glue-border);
+        }
+
+        .glue-section .expand-btn:hover {
+            background-color: var(--glue-primary);
+            border-color: var(--glue-primary);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .glue-section {
+                padding: var(--spacing-md);
+                background-size: 200px;
+            }
+
+            .glue-section .project-card {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* Common Section Styling */
+        .project-category {
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* VPC Section Theme */
+        .networking-section {
+            background-color: var(--vpc-background);
+            background-image: url('../media/Virtual Private Cloud.svg');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 300px;
+        }
+
+        .networking-section .project-card::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-image: url('../media/vpc-icon.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.3;
+            transition: all var(--transition-normal);
+        }
+
+        /* Glue Section Theme */
+        .glue-section {
+            background-color: var(--glue-background);
+            background-image: url('../media/Glue.svg');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 300px;
+        }
+
+        .glue-section .project-card {
+            background: white;
+            border: 1px solid var(--glue-border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glue-section .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(102, 177, 255, 0.15);
+            border-color: var(--glue-accent);
+            background: linear-gradient(135deg, var(--glue-background) 0%, #FFFFFF 100%);
+        }
+
+        .glue-section .project-card::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-image: url('../media/glue-icon.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.3;
+            transition: all var(--transition-normal);
+        }
+
+        .glue-section .project-card:hover::after {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+
+        .glue-section .section-header h5 {
+            color: var(--glue-primary);
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .glue-section .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .glue-section .project-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--glue-primary);
+            background: linear-gradient(135deg, rgba(102, 177, 255, 0.1) 0%, rgba(102, 177, 255, 0.05) 100%);
+            padding: 8px 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(102, 177, 255, 0.1);
+        }
+
+        .glue-section h4 {
+            color: var(--glue-text);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .glue-section .project-description {
+            color: var(--glue-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .glue-section .project-footer {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--glue-border);
+        }
+
+        .glue-section .repo-link {
+            color: var(--glue-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all var(--transition-normal);
+        }
+
+        .glue-section .repo-link:hover {
+            color: var(--glue-primary);
+        }
+
+        .glue-section .status-badge {
+            background-color: var(--glue-accent);
+            color: var(--glue-text);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .glue-section .expand-btn {
+            color: var(--glue-primary);
+            border-color: var(--glue-border);
+        }
+
+        .glue-section .expand-btn:hover {
+            background-color: var(--glue-primary);
+            border-color: var(--glue-primary);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .glue-section {
+                padding: var(--spacing-md);
+                background-size: 200px;
+            }
+        }
+
+        /* Lambda Section Styling */
+        .lambda-section {
+            background-color: var(--lambda-background);
+            background-image: url('media/Lambda.svg');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 300px;
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lambda-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                var(--lambda-background) 30%,
+                rgba(255, 248, 240, 0.95) 100%
+            );
+            pointer-events: none;
+        }
+
+        .lambda-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lambda-section .project-card {
+            background: white;
+            border: 1px solid var(--lambda-border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lambda-section .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 153, 0, 0.15);
+            border-color: var(--lambda-accent);
+            background: linear-gradient(135deg, var(--lambda-background) 0%, #FFFFFF 100%);
+        }
+
+        .lambda-section .project-card::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-image: url('media/Lambda.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.3;
+            transition: all var(--transition-normal);
+        }
+
+        .lambda-section .project-card:hover::after {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+
+        .lambda-section .section-header h5 {
+            color: var(--lambda-primary);
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .lambda-section .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .lambda-section .project-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--lambda-primary);
+            background: linear-gradient(135deg, rgba(255, 153, 0, 0.1) 0%, rgba(255, 153, 0, 0.05) 100%);
+            padding: 8px 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(255, 153, 0, 0.1);
+        }
+
+        .lambda-section h4 {
+            color: var(--lambda-text);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .lambda-section .project-description {
+            color: var(--lambda-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .lambda-section .project-footer {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--lambda-border);
+        }
+
+        .lambda-section .repo-link {
+            color: var(--lambda-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all var(--transition-normal);
+        }
+
+        .lambda-section .repo-link:hover {
+            color: var(--lambda-primary);
+        }
+
+        .lambda-section .status-badge {
+            background-color: var(--lambda-accent);
+            color: var(--lambda-text);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .lambda-section .expand-btn {
+            color: var(--lambda-primary);
+            border-color: var(--lambda-border);
+        }
+
+        .lambda-section .expand-btn:hover {
+            background-color: var(--lambda-primary);
+            border-color: var(--lambda-primary);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .lambda-section {
+                padding: var(--spacing-md);
+                background-size: 200px;
+            }
+        }
+
+        /* Step Functions Section Styling */
+        .stepfunctions-section {
+            background-color: var(--stepfunctions-background);
+            background-image: url('media/StepFunctions.svg');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 300px;
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stepfunctions-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                var(--stepfunctions-background) 30%,
+                rgba(255, 240, 245, 0.95) 100%
+            );
+            pointer-events: none;
+        }
+
+        .stepfunctions-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stepfunctions-section .project-card {
+            background: white;
+            border: 1px solid var(--stepfunctions-border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stepfunctions-section .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(205, 34, 100, 0.15);
+            border-color: var(--stepfunctions-accent);
+            background: linear-gradient(135deg, var(--stepfunctions-background) 0%, #FFFFFF 100%);
+        }
+
+        .stepfunctions-section .project-card::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-image: url('media/StepFunctions.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.3;
+            transition: all var(--transition-normal);
+        }
+
+        .stepfunctions-section .project-card:hover::after {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+
+        .stepfunctions-section .section-header h5 {
+            color: var(--stepfunctions-primary);
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .stepfunctions-section .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stepfunctions-section .project-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--stepfunctions-primary);
+            background: linear-gradient(135deg, rgba(205, 34, 100, 0.1) 0%, rgba(205, 34, 100, 0.05) 100%);
+            padding: 8px 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(205, 34, 100, 0.1);
+        }
+
+        .stepfunctions-section h4 {
+            color: var(--stepfunctions-text);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .stepfunctions-section .project-description {
+            color: var(--stepfunctions-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .stepfunctions-section .project-footer {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--stepfunctions-border);
+        }
+
+        .stepfunctions-section .repo-link {
+            color: var(--stepfunctions-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all var(--transition-normal);
+        }
+
+        .stepfunctions-section .repo-link:hover {
+            color: var(--stepfunctions-primary);
+        }
+
+        .stepfunctions-section .status-badge {
+            background-color: var(--stepfunctions-accent);
+            color: var(--stepfunctions-text);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .stepfunctions-section .expand-btn {
+            color: var(--stepfunctions-primary);
+            border-color: var(--stepfunctions-border);
+        }
+
+        .stepfunctions-section .expand-btn:hover {
+            background-color: var(--stepfunctions-primary);
+            border-color: var(--stepfunctions-primary);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stepfunctions-section {
+                padding: var(--spacing-md);
+                background-size: 200px;
+            }
         }
     </style>
 </head>
@@ -672,21 +1359,464 @@
             <div class="tree-menu">
                 <div class="tree-parent">Analytics Services</div>
                 <div class="tree-content">
-                    <div class="project-card">
-                        <h3>AWS Glue Immersion Day</h3>
-                        <a href="#" class="project-link">View Project</a>
+                    <div class="project-category glue-section">
+                        <div class="section-header">
+                            <h5>
+                                AWS Glue Immersion Day
+                            </h5>
+                        </div>
+                        <div class="project-grid collapsed">
+                            <!-- Project 0201 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0201
+                                    </span>
+                                </div>
+                                <h4>Working with Glue Data Catalog</h4>
+                                <p class="project-description">Implementation of AWS Glue Data Catalog for metadata management</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0201-glue-cft" class="repo-link">
+                                        0201-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0202 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0202
+                                    </span>
+                                </div>
+                                <h4>Working with Apache Spark</h4>
+                                <p class="project-description">Apache Spark integration with AWS Glue for data processing</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0202-glue-cft" class="repo-link">
+                                        0202-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0203 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0203
+                                    </span>
+                                </div>
+                                <h4>Working with Glue ETL</h4>
+                                <p class="project-description">Implementation of ETL jobs using AWS Glue</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0203-glue-cft" class="repo-link">
+                                        0203-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0204 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0204
+                                    </span>
+                                </div>
+                                <h4>Working with Glue Streaming</h4>
+                                <p class="project-description">Real-time data processing with AWS Glue Streaming</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0204-glue-cft" class="repo-link">
+                                        0204-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0205 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0205
+                                    </span>
+                                </div>
+                                <h4>Monitoring, Troubleshooting and Scaling</h4>
+                                <p class="project-description">Implementing monitoring and scaling solutions for Glue jobs</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0205-glue-cft" class="repo-link">
+                                        0205-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0206 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0206
+                                    </span>
+                                </div>
+                                <h4>Glue Job Orchestration</h4>
+                                <p class="project-description">Orchestrating Glue jobs using AWS services</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0206-glue-cft" class="repo-link">
+                                        0206-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0207 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0207
+                                    </span>
+                                </div>
+                                <h4>Working with Glue Data Quality</h4>
+                                <p class="project-description">Implementing data quality checks using AWS Glue</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0207-glue-cft" class="repo-link">
+                                        0207-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0208 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0208
+                                    </span>
+                                </div>
+                                <h4>Working with Glue Databrew</h4>
+                                <p class="project-description">Data preparation using AWS Glue DataBrew</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0208-glue-cft" class="repo-link">
+                                        0208-glue-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">
+                            <span class="expand-text">Show More</span>
+                            <span class="collapse-text">Show Less</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="project-card">
-                        <h3>Redshift Immersion Day</h3>
-                        <a href="#" class="project-link">View Project</a>
+                    <div class="project-category redshift-section">
+                        <div class="section-header">
+                            <h5>
+                                AWS Redshift Immersion Day
+                            </h5>
+                        </div>
+                        <div class="project-grid collapsed">
+                            <!-- Project 0901 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0901
+                                    </span>
+                                </div>
+                                <h4>Getting Started with Redshift</h4>
+                                <p class="project-description">Initial setup and configuration of Amazon Redshift</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0901-redshift-cft" class="repo-link">
+                                        0901-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0902 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0902
+                                    </span>
+                                </div>
+                                <h4>Table Design and Load</h4>
+                                <p class="project-description">Implementation of table design patterns and data loading strategies</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0902-redshift-cft" class="repo-link">
+                                        0902-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0903 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0903
+                                    </span>
+                                </div>
+                                <h4>Ongoing Load-ELT</h4>
+                                <p class="project-description">Implementation of ELT processes for continuous data loading</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0903-redshift-cft" class="repo-link">
+                                        0903-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0904 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0904
+                                    </span>
+                                </div>
+                                <h4>Data Sharing</h4>
+                                <p class="project-description">Setup and configuration of Redshift data sharing capabilities</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0904-redshift-cft" class="repo-link">
+                                        0904-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0905 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0905
+                                    </span>
+                                </div>
+                                <h4>Machine Learning-Redshift ML</h4>
+                                <p class="project-description">Implementation of machine learning capabilities using Redshift ML</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0905-redshift-cft" class="repo-link">
+                                        0905-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0906 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0906
+                                    </span>
+                                </div>
+                                <h4>Query Data Lake-Redshift Spectrum</h4>
+                                <p class="project-description">Implementation of Redshift Spectrum for data lake querying</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0906-redshift-cft" class="repo-link">
+                                        0906-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0907 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0907
+                                    </span>
+                                </div>
+                                <h4>Operations</h4>
+                                <p class="project-description">Implementation of operational best practices and maintenance procedures</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0907-redshift-cft" class="repo-link">
+                                        0907-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">
+                            <span class="expand-text">Show More</span>
+                            <span class="collapse-text">Show Less</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="project-card">
-                        <h3>Athena Immersion Day</h3>
-                        <a href="#" class="project-link">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>ETL on EMR Immersion Workshop</h3>
-                        <a href="#" class="project-link">View Project</a>
+                    <div class="project-category athena-section">
+                        <div class="section-header">
+                            <h5>
+                                Athena Immersion Day
+                            </h5>
+                        </div>
+                        <div class="project-grid collapsed">
+                            <!-- Project 1001 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1001
+                                    </span>
+                                </div>
+                                <h4>Athena Basics🔥</h4>
+                                <p class="project-description">Getting started with Amazon Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1001-athena-cft" class="repo-link">
+                                        1001-athena-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1002 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1002
+                                    </span>
+                                </div>
+                                <h4>Athena Federation</h4>
+                                <p class="project-description">Federating data sources with Amazon Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1002-athena-cft" class="repo-link">
+                                        1002-athena-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1003 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1003
+                                    </span>
+                                </div>
+                                <h4>User Defined Functions</h4>
+                                <p class="project-description">Creating and using custom functions in Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1003-athena-cft" class="repo-link">
+                                        1003-athena-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1004 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1004
+                                    </span>
+                                </div>
+                                <h4>Custom Data Source Connector</h4>
+                                <p class="project-description">Building a custom data source connector for Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1004-athena-cft" class="repo-link">
+                                        1004-athena-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1005 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1005
+                                    </span>
+                                </div>
+                                <h4>Test Analysis using UDF</h4>
+                                <p class="project-description">Analyzing test data using user-defined functions in Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1005-redshift-cft" class="repo-link">
+                                        1005-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1006 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1006
+                                    </span>
+                                </div>
+                                <h4>Machine Learning</h4>
+                                <p class="project-description">Implementing machine learning models with Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1006-redshift-cft" class="repo-link">
+                                        1006-redshift-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1007 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1007
+                                    </span>
+                                </div>
+                                <h4>ACID Transactions with Iceberg</h4>
+                                <p class="project-description">Implementing ACID transactions with Iceberg in Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1007-athena-cft" class="repo-link">
+                                        1007-athena-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1008 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        1008
+                                    </span>
+                                </div>
+                                <h4>Athena Spark</h4>
+                                <p class="project-description">Using Apache Spark with Amazon Athena</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/1008-athena-cft" class="repo-link">
+                                        1008-athena-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">
+                            <span class="expand-text">Show More</span>
+                            <span class="collapse-text">Show Less</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -698,9 +1828,128 @@
             <div class="tree-menu">
                 <div class="tree-parent">Serverless Computing</div>
                 <div class="tree-content">
-                    <div class="project-card">
-                        <h3>Serverless Immersion Day</h3>
-                        <a href="#" class="project-link">View Project</a>
+                    <div class="project-category lambda-section">
+                        <div class="section-header">
+                            <h5>
+                                AWS Serverless Immersion Day
+                            </h5>
+                        </div>
+                        <div class="project-grid collapsed">
+                            <!-- Project 0301 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0301
+                                    </span>
+                                </div>
+                                <h4>Introduction to Serverless 🔥𝟙</h4>
+                                <p class="project-description">Getting started with AWS Lambda and serverless architecture</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0301-serverless-cft" class="repo-link">
+                                        0301-serverless-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0302 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0302
+                                    </span>
+                                </div>
+                                <h4>Synchronous Invocation</h4>
+                                <p class="project-description">Implementation of synchronous Lambda function invocations</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0302-serverless-cft" class="repo-link">
+                                        0302-serverless-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0303 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0303
+                                    </span>
+                                </div>
+                                <h4>Synchronous + Idempoyence</h4>
+                                <p class="project-description">Implementing idempotent synchronous Lambda functions</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0303-serverless-cft" class="repo-link">
+                                        0303-serverless-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0304 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0304
+                                    </span>
+                                </div>
+                                <h4>Asynchronous Invocation</h4>
+                                <p class="project-description">Implementation of asynchronous Lambda function invocations</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0304-serverless-cft" class="repo-link">
+                                        0304-serverless-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0305 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0305
+                                    </span>
+                                </div>
+                                <h4>Pooling</h4>
+                                <p class="project-description">Implementation of Lambda function pooling patterns</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0305-serverless-cft" class="repo-link">
+                                        0305-serverless-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 0306 -->
+                            <div class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0306
+                                    </span>
+                                </div>
+                                <h4>Deep Dive</h4>
+                                <p class="project-description">Advanced concepts and best practices in Lambda</p>
+                                <div class="project-footer">
+                                    <a href="https://github.com/subhamay-bhattacharyya/0306-serverless-cft" class="repo-link">
+                                        0306-serverless-cft
+                                        <span class="status-badge status-progress">In Progress</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="expand-btn">
+                            <span class="expand-text">Show More</span>
+                            <span class="collapse-text">Show Less</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="project-card">
                         <h3>Step Function Immersion Day</h3>
