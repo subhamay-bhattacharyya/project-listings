@@ -19,6 +19,10 @@
             --border-color: #dddddd;
             --border-radius-sm: 4px;
             --transition-fast: 0.2s;
+            --transition-normal: 0.5s;
+            --spacing-md: 20px;
+            --spacing-sm: 8px;
+            --background-light: #ffffff;
         }
 
         * {
@@ -184,6 +188,90 @@
             background-color: var(--primary-color);
             transition: background-color var(--transition-fast);
         }
+
+        /* Grid Expansion Styles */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            transition: max-height var(--transition-normal);
+            overflow: hidden;
+        }
+
+        .project-grid.collapsed {
+            max-height: 500px; /* Adjust this value based on your needs */
+        }
+
+        .project-grid.expanded {
+            max-height: 2000px; /* Adjust this value based on your content */
+        }
+
+        /* Expand Button Styles */
+        .expand-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) auto;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all var(--transition-normal);
+        }
+
+        .expand-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .expand-icon {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition-normal);
+        }
+
+        .expanded + .expand-btn .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .expand-btn .collapse-text {
+            display: none;
+        }
+
+        .expanded + .expand-btn .expand-text {
+            display: none;
+        }
+
+        .expanded + .expand-btn .collapse-text {
+            display: inline;
+        }
+
+        /* Optional: Add fade effect for hidden content */
+        .project-grid::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--background-light));
+            pointer-events: none;
+            transition: opacity var(--transition-normal);
+        }
+
+        .project-grid.expanded::after {
+            opacity: 0;
+        }
+
+        .project-grid.collapsed::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -198,7 +286,7 @@
                 <div class="tree-content">
                     <div class="project-category">
                         <h3>AWS Networking Immersion Day</h3>
-                        <div class="project-grid">
+                        <div class="project-grid collapsed">
                             <!-- Project 0101 -->
                             <div class="project-card">
                                 <div class="project-meta">
@@ -388,6 +476,13 @@
                                 </div>
                             </div>
                         </div>
+                        <button class="expand-btn">
+                            <span class="expand-text">Show More</span>
+                            <span class="collapse-text">Show Less</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -484,6 +579,21 @@
             parent.addEventListener('click', () => {
                 parent.classList.toggle('expanded');
                 parent.nextElementSibling.classList.toggle('expanded');
+            });
+        });
+
+        document.querySelectorAll('.expand-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const grid = button.previousElementSibling;
+                grid.classList.toggle('collapsed');
+                grid.classList.toggle('expanded');
+                
+                // Optional: Smooth scroll when expanding
+                if (grid.classList.contains('expanded')) {
+                    setTimeout(() => {
+                        button.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+                }
             });
         });
     </script>
