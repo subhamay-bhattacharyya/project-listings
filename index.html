@@ -23,6 +23,14 @@
             --spacing-md: 20px;
             --spacing-sm: 8px;
             --background-light: #ffffff;
+            --vpc-primary: #2E73B8;     /* VPC blue */
+            --vpc-secondary: #1A4F85;   /* Darker blue */
+            --vpc-accent: #66B2FF;      /* Light blue */
+            --vpc-background: #F2F7FF;  /* Very light blue background */
+            --vpc-text: #0A2744;        /* Dark navy text */
+            --vpc-border: #D1E4FF;      /* Light blue border */
+            --vpc-success: #3DAB54;     /* Green for complete status */
+            --vpc-progress: #FF9900;    /* AWS orange for in-progress */
         }
 
         * {
@@ -272,6 +280,77 @@
         .project-grid.collapsed::after {
             opacity: 1;
         }
+
+        /* Updated styles for the Networking section */
+        .networking-section {
+            background-color: var(--vpc-background);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+        }
+
+        .networking-section .project-card {
+            background: white;
+            border: 1px solid var(--vpc-border);
+            box-shadow: 0 2px 4px rgba(46, 115, 184, 0.1);
+            transition: all var(--transition-normal);
+        }
+
+        .networking-section .project-card:hover {
+            box-shadow: 0 8px 16px rgba(46, 115, 184, 0.15);
+            border-color: var(--vpc-accent);
+        }
+
+        .networking-section .project-code {
+            color: var(--vpc-primary);
+            background: linear-gradient(135deg, rgba(46, 115, 184, 0.1) 0%, rgba(46, 115, 184, 0.05) 100%);
+            box-shadow: 0 2px 4px rgba(46, 115, 184, 0.1),
+                        0 0 0 1px rgba(46, 115, 184, 0.1);
+        }
+
+        .networking-section .tech-badge {
+            background-color: var(--vpc-secondary);
+            color: white;
+        }
+
+        .networking-section h3 {
+            color: var(--vpc-primary);
+            font-weight: 600;
+        }
+
+        .networking-section h4 {
+            color: var(--vpc-text);
+        }
+
+        .networking-section .status-badge.status-complete {
+            background-color: var(--vpc-success);
+        }
+
+        .networking-section .status-badge.status-progress {
+            background-color: var(--vpc-progress);
+        }
+
+        .networking-section .expand-btn {
+            color: var(--vpc-primary);
+            border-color: var(--vpc-border);
+        }
+
+        .networking-section .expand-btn:hover {
+            background-color: var(--vpc-primary);
+            border-color: var(--vpc-primary);
+            color: white;
+        }
+
+        .networking-section .project-description {
+            color: var(--vpc-text);
+        }
+
+        .networking-section .repo-link {
+            color: var(--vpc-secondary);
+        }
+
+        .networking-section .repo-link:hover {
+            color: var(--vpc-primary);
+        }
     </style>
 </head>
 <body>
@@ -284,7 +363,7 @@
             <div class="tree-menu">
                 <div class="tree-parent">AWS Core Services</div>
                 <div class="tree-content">
-                    <div class="project-category">
+                    <div class="project-category networking-section">
                         <h3>AWS Networking Immersion Day</h3>
                         <div class="project-grid collapsed">
                             <!-- Project 0101 -->
