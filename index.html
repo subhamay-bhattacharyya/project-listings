@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subhamay Bhattacharyya's personal project portfolio showcasing AWS, DevOps, and Cloud Infrastructure projects. Explore hands-on implementations of AWS services, Infrastructure as Code, and cloud architecture solutions.">
+    <title>Subhamay Bhattacharyya | Personal Project Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004d99;
+            --background-color: #f5f5f5;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --border-color: #dddddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tree-menu {
+            margin-bottom: 20px;
+        }
+
+        .tree-menu ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .tree-menu li {
+            margin: 10px 0;
+        }
+
+        .tree-parent {
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .tree-parent::before {
+            content: '▶';
+            display: inline-block;
+            margin-right: 5px;
+            transition: transform 0.3s;
+        }
+
+        .tree-parent.expanded::before {
+            transform: rotate(90deg);
+        }
+
+        .tree-content {
+            display: none;
+        }
+
+        .tree-content.expanded {
+            display: block;
+        }
+
+        .project-card {
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .complete {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .in-progress {
+            background-color: #FFC107;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personal Project Portfolio</h1>
+    
+    <div class="container">
+        <!-- Column 1: AWS Immersion Days -->
+        <div class="section">
+            <h2>AWS Immersion Days</h2>
+            <div class="tree-menu">
+                <div class="tree-parent">AWS Core Services</div>
+                <div class="tree-content">
+                    <div class="project-card">
+                        <h3>AWS Networking Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                        <span class="status-badge complete">Complete</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>AWS Storage Workshop</h3>
+                        <a href="#" class="project-link">View Project</a>
+                        <span class="status-badge in-progress">In Progress</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: Data & Analytics -->
+        <div class="section">
+            <h2>Data & Analytics</h2>
+            <div class="tree-menu">
+                <div class="tree-parent">Analytics Services</div>
+                <div class="tree-content">
+                    <div class="project-card">
+                        <h3>AWS Glue Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>Redshift Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>Athena Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>ETL on EMR Immersion Workshop</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 3: Serverless & Applications -->
+        <div class="section">
+            <h2>Serverless & Applications</h2>
+            <div class="tree-menu">
+                <div class="tree-parent">Serverless Computing</div>
+                <div class="tree-content">
+                    <div class="project-card">
+                        <h3>Serverless Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>Step Function Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>API Gateway Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>DynamoDB Immersion Day</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 4: DevOps & Infrastructure -->
+        <div class="section">
+            <h2>DevOps & Infrastructure</h2>
+            <div class="tree-menu">
+                <div class="tree-parent">Infrastructure as Code</div>
+                <div class="tree-content">
+                    <div class="project-card">
+                        <h3>CloudFormation Nested Stack Templates</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>Terraform Private Registry Modules</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+                <div class="tree-parent">Special Projects</div>
+                <div class="tree-content">
+                    <div class="project-card">
+                        <h3>Generative AI Projects by Lucy Wang</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>DevOps 30 Days Challenge</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>GitSecOps Minicap By Derek Morgan</h3>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.tree-parent').forEach(parent => {
+            parent.addEventListener('click', () => {
+                parent.classList.toggle('expanded');
+                parent.nextElementSibling.classList.toggle('expanded');
+            });
+        });
+    </script>
+</body>
+</html> 
