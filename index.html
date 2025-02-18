@@ -31,6 +31,12 @@
             --vpc-border: #D1E4FF;      /* Light blue border */
             --vpc-success: #3DAB54;     /* Green for complete status */
             --vpc-progress: #FF9900;    /* AWS orange for in-progress */
+            --glue-primary: #E93CAC;     /* Glue pink */
+            --glue-secondary: #B42E84;   /* Darker pink */
+            --glue-accent: #FF99D6;      /* Light pink */
+            --glue-background: #FFF5FA;  /* Very light pink background */
+            --glue-text: #2D1421;        /* Dark text */
+            --glue-border: #FFD6EC;      /* Light pink border */
         }
 
         * {
@@ -351,6 +357,174 @@
         .networking-section .repo-link:hover {
             color: var(--vpc-primary);
         }
+
+        /* AWS Glue Theme Colors */
+        .glue-section {
+            background-color: var(--glue-background);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+        }
+
+        .glue-section .project-card {
+            background: white;
+            border: 1px solid var(--glue-border);
+            box-shadow: 0 2px 4px rgba(233, 60, 172, 0.1);
+            transition: all var(--transition-normal);
+        }
+
+        .glue-section .project-card:hover {
+            box-shadow: 0 8px 16px rgba(233, 60, 172, 0.15);
+            border-color: var(--glue-accent);
+        }
+
+        .glue-section .project-code {
+            color: var(--glue-primary);
+            background: linear-gradient(135deg, rgba(233, 60, 172, 0.1) 0%, rgba(233, 60, 172, 0.05) 100%);
+            box-shadow: 0 2px 4px rgba(233, 60, 172, 0.1),
+                        0 0 0 1px rgba(233, 60, 172, 0.1);
+        }
+
+        .glue-section .tech-badge {
+            background-color: var(--glue-secondary);
+            color: white;
+        }
+
+        .glue-section h3 {
+            color: var(--glue-primary);
+            font-weight: 600;
+        }
+
+        .glue-section h4 {
+            color: var(--glue-text);
+        }
+
+        .glue-section .expand-btn {
+            color: var(--glue-primary);
+            border-color: var(--glue-border);
+        }
+
+        .glue-section .expand-btn:hover {
+            background-color: var(--glue-primary);
+            border-color: var(--glue-primary);
+            color: white;
+        }
+
+        .section-description {
+            color: var(--glue-secondary);
+            font-size: 1.1rem;
+            margin-top: var(--spacing-sm);
+        }
+
+        .project-card {
+            background: var(--glue-surface);
+            border: 1px solid var(--glue-border);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-normal);
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(233, 60, 172, 0.15);
+            border-color: var(--glue-primary);
+        }
+
+        .project-content {
+            margin: var(--spacing-md) 0;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: var(--spacing-sm);
+        }
+
+        .tag {
+            background-color: var(--glue-hover);
+            color: var(--glue-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+
+        .github-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: var(--spacing-xs);
+        }
+
+        .repo-link {
+            display: flex;
+            align-items: center;
+            color: var(--glue-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-normal);
+        }
+
+        .repo-link:hover {
+            color: var(--glue-primary);
+        }
+
+        .expand-btn {
+            background-color: transparent;
+            border: 2px solid var(--glue-border);
+            color: var(--glue-primary);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-normal);
+            margin-top: var(--spacing-lg);
+        }
+
+        .expand-btn:hover {
+            background-color: var(--glue-primary);
+            border-color: var(--glue-primary);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .glue-section {
+                padding: var(--spacing-md);
+            }
+
+            .section-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Project Code Styles */
+        .project-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+                        0 0 0 1px rgba(0, 0, 0, 0.1);
+            padding: 4px 8px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8em;
+            display: inline-block;
+            margin-right: 10px;
+            transition: all var(--transition-normal);
+        }
+
+        .project-code:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-code::before {
+            content: 'Project';
+            font-weight: normal;
+            margin-right: 5px;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
@@ -369,10 +543,13 @@
                             <!-- Project 0101 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0101</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0101
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -390,10 +567,13 @@
                             <!-- Project 0102 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0102</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0102
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -411,10 +591,13 @@
                             <!-- Project 0103 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0103</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0103
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -432,10 +615,13 @@
                             <!-- Project 0104 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0104</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0104
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -453,10 +639,13 @@
                             <!-- Project 0105 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0105</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0105
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -474,10 +663,13 @@
                             <!-- Project 0106 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0106</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0106
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -495,10 +687,13 @@
                             <!-- Project 0107 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0107</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0107
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -516,10 +711,13 @@
                             <!-- Project 0108 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0108</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0108
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
@@ -537,10 +735,13 @@
                             <!-- Project 0109 -->
                             <div class="project-card">
                                 <div class="project-meta">
-                                    <span class="project-code">0109</span>
+                                    <span class="project-code">
+                                        <span class="code-label">Project</span>
+                                        0109
+                                    </span>
                                     <span class="tech-badge">
                                         <svg class="aws-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3-1.021V4.875c-1.232-2.324-3.991-3.926-7-3.926-4.411 0-8 3.589-8 8 0 .858.137 1.68.386 2.453l8.186-4.354a.75.75 0 0 1 .699 0l5.729 3.045v.886zm0 1.958v-.886l-5.729-3.045a.75.75 0 0 0-.699 0L6.386 13.36A8.003 8.003 0 0 0 14 19.051c3.009 0 5.768-1.602 7-3.926v-2.188z" fill="currentColor"/>
+                                            <path d="M13.833 11.555a.145.145 0 0 1-.146.146h-1.558v2.887c0 .081-.065.146-.146.146h-.569a.145.145 0 0 1-.146-.146v-2.887H9.71a.145.145 0 0 1-.146-.146v-.471c0-.081.065-.146.146-.146h1.558V8.051c0-.081.065-.146.146-.146h.569c.081 0 .146.065.146.146v2.887h1.558c.081 0 .146.065.146.146v.471z" fill="currentColor"/>
                                         </svg>
                                         CloudFormation
                                     </span>
