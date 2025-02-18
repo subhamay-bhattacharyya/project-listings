@@ -300,11 +300,40 @@
         /* Updated styles for the Networking section */
         .networking-section {
             background-color: var(--vpc-background);
-            border-radius: var(--border-radius-lg);
-            padding: var(--spacing-xl);
+            background-image: url('../media/Virtual Private Cloud.svg');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 300px;
+            border-radius: 16px;
+            padding: 24px 28px;
             margin: var(--spacing-lg) 0;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Add overlay to ensure content readability */
+        .networking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                var(--vpc-background) 30%,
+                rgba(242, 247, 255, 0.95) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* Ensure content stays above background */
+        .networking-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Header */
         .section-header {
             margin-bottom: var(--spacing-lg);
         }
@@ -410,9 +439,10 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .networking-section {
+                background-size: 200px;
                 padding: var(--spacing-md);
             }
-
+            
             .section-header h3 {
                 font-size: 1.5rem;
             }
@@ -437,7 +467,7 @@
             right: 12px;
             width: 32px;
             height: 32px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' stroke='%232E73B8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none' opacity='0.2'/%3E%3C/svg%3E");
+            background-image: url('media/Virtual Private Cloud.svg');
             background-repeat: no-repeat;
             background-size: contain;
             opacity: 0.3;
