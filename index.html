@@ -83,7 +83,7 @@
 
         .container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             padding: 20px;
             max-width: 1600px;
@@ -156,6 +156,7 @@
             transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .project-card:hover {
@@ -244,18 +245,41 @@
         /* Grid Expansion Styles */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--spacing-md);
-            transition: max-height var(--transition-normal);
+            grid-template-rows: auto;  /* Remove max-height limitation */
+            overflow: visible;         /* Remove overflow restriction */
+            transition: all var(--transition-normal);
+        }
+
+        /* Update expand button to show collapse state by default */
+        .expand-btn .expand-text {
+            display: none;
+        }
+
+        .expand-btn .collapse-text {
+            display: inline;
+        }
+
+        .expand-btn .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* When collapsed class is explicitly added */
+        .project-grid.collapsed {
+            grid-template-rows: repeat(5, auto);
             overflow: hidden;
         }
 
-        .project-grid.collapsed {
-            max-height: 500px; /* Adjust this value based on your needs */
+        .project-grid.collapsed ~ .expand-btn .expand-text {
+            display: inline;
         }
 
-        .project-grid.expanded {
-            max-height: 2000px; /* Adjust this value based on your content */
+        .project-grid.collapsed ~ .expand-btn .collapse-text {
+            display: none;
+        }
+
+        .project-grid.collapsed ~ .expand-btn .expand-icon {
+            transform: rotate(0deg);
         }
 
         /* Expand Button Styles */
@@ -553,9 +577,9 @@
         /* Glue Section Styling (matching VPC structure) */
         .glue-section {
             background-color: var(--glue-background);
-            background-image: url('../media/Glue.svg');
+            background-image: url('media/Glue.svg');
             background-repeat: no-repeat;
-            background-position: right bottom;
+            background-position: right top;
             background-size: 300px;
             border-radius: var(--border-radius-lg);
             padding: var(--spacing-xl);
@@ -639,10 +663,14 @@
         }
 
         .glue-section h5 {
-            color: var(--glue-text);
             font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(233, 60, 172, 0.1);
-            margin-bottom: var(--spacing-sm);
+            color: var(--glue-text);
+            text-shadow: 1px 1px 2px rgba(46, 115, 184, 0.1);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+            position: relative;
+            z-index: 1;
         }
 
         .glue-section .project-description {
@@ -717,7 +745,7 @@
         /* VPC Section Theme */
         .networking-section {
             background-color: var(--vpc-background);
-            background-image: url('../media/Virtual Private Cloud.svg');
+            background-image: url('media/Virtual Private Cloud.svg');
             background-repeat: no-repeat;
             background-position: right bottom;
             background-size: 300px;
@@ -730,7 +758,7 @@
             right: 12px;
             width: 32px;
             height: 32px;
-            background-image: url('../media/vpc-icon.svg');
+            background-image: url('media/Virtual Private Cloud.svg');
             background-repeat: no-repeat;
             background-size: contain;
             opacity: 0.3;
@@ -740,7 +768,7 @@
         /* Glue Section Theme */
         .glue-section {
             background-color: var(--glue-background);
-            background-image: url('../media/Glue.svg');
+            background-image: url('media/Glue.svg');
             background-repeat: no-repeat;
             background-position: right bottom;
             background-size: 300px;
@@ -770,7 +798,7 @@
             right: 12px;
             width: 32px;
             height: 32px;
-            background-image: url('../media/glue-icon.svg');
+            background-image: url('media/Glue.svg');
             background-repeat: no-repeat;
             background-size: contain;
             opacity: 0.3;
@@ -1252,9 +1280,24 @@
             font-weight: 500;
             background: linear-gradient(135deg, rgba(var(--vpc-primary-rgb), 0.1) 0%, rgba(var(--vpc-primary-rgb), 0.05) 100%);
             padding: 6px 12px;
-            border-radius: 8px;
             margin: 0;
-            line-height: 1.2;
+            display: flex;
+            align-items: center;  /* Center text vertically */
+        }
+
+        .project-card .project-code {
+            border-radius: 8px 0 0 8px;
+            font-weight: 500;
+            flex-shrink: 0;  /* Prevent code from shrinking */
+        }
+
+        .project-card h4 {
+            border-radius: 0 8px 8px 0;
+            font-weight: 600;
+            border-left: 1px solid rgba(var(--vpc-primary-rgb), 0.1);
+            text-align: left;
+            flex-grow: 1;  /* Allow title to grow */
+            justify-content: flex-start;  /* Left align text */
         }
 
         .project-card .code-label {
@@ -1287,13 +1330,12 @@
             <div class="section-header">
                 <h5>AWS DynamoDB Immersion Day</h5>
             </div>
-            <div class="project-grid collapsed">
+            <div class="project-grid">
                 <!-- Project 1201 -->
                 <div class="project-card">
                     <div class="project-meta">
                         <span class="project-code">
-                            <span class="code-label">Project</span>
-                            1201
+                            1201  <!-- Removed "Project" prefix -->
                         </span>
                         <h4>DynamoDB Basics</h4>
                     </div>
@@ -1313,13 +1355,12 @@
                 <div class="section-header">
                     <h5>CloudFormation Nested Stack Templates</h5>
                 </div>
-                <div class="project-grid collapsed">
+                <div class="project-grid">
                     <!-- Networking Projects (01-09) -->
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                01-09
+                                01-09  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Networking</h4>
                         </div>
@@ -1336,8 +1377,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                10-12
+                                10-12  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Application Integration</h4>
                         </div>
@@ -1354,8 +1394,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                13-14
+                                13-14  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Storage</h4>
                         </div>
@@ -1372,8 +1411,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                15-16
+                                15-16  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Streaming</h4>
                         </div>
@@ -1390,8 +1428,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                17-19
+                                17-19  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Compute</h4>
                         </div>
@@ -1408,8 +1445,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                20-21
+                                20-21  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Database</h4>
                         </div>
@@ -1426,8 +1462,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                22-23
+                                22-23  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Monitoring</h4>
                         </div>
@@ -1444,8 +1479,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                24-26
+                                24-26  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Identity and Access Management</h4>
                         </div>
@@ -1462,8 +1496,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                27-31
+                                27-31  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>ETL</h4>
                         </div>
@@ -1480,8 +1513,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                32-33
+                                32-33  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Systems Manager</h4>
                         </div>
@@ -1498,8 +1530,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                34
+                                34  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>EventBridge</h4>
                         </div>
@@ -1516,8 +1547,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                35-37
+                                35-37  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>API Gateway</h4>
                         </div>
@@ -1534,8 +1564,7 @@
                     <div class="project-card">
                         <div class="project-meta">
                             <span class="project-code">
-                                <span class="code-label">Project</span>
-                                38-40
+                                38-40  <!-- Removed "Project" prefix -->
                             </span>
                             <h4>Analytics</h4>
                         </div>
@@ -1548,13 +1577,6 @@
                         </div>
                     </div>
                 </div>
-                <button class="expand-btn">
-                    <span class="expand-text">Show More</span>
-                    <span class="collapse-text">Show Less</span>
-                    <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
             </div>
         </div>
     </style>
@@ -1575,15 +1597,14 @@
                                 AWS Networking Immersion Day
                             </h5>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 0101 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0101
+                                        <span class="code-number">0101</span>
+                                        <span class="code-name">VPC Fundamentals</span>
                                     </span>
-                                    <h4>VPC Fundamentals</h4>
                                 </div>
                                 <p class="project-description">Implementation of basic VPC concepts and fundamentals</p>
                                 <div class="project-footer">
@@ -1598,10 +1619,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0102
+                                        <span class="code-number">0102</span>
+                                        <span class="code-name">Multiple VPCs</span>
                                     </span>
-                                    <h4>Multiple VPCs</h4>
                                 </div>
                                 <p class="project-description">Setup and configuration of multiple VPC environments</p>
                                 <div class="project-footer">
@@ -1616,10 +1636,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0103
+                                        <span class="code-number">0103</span>
+                                        <span class="code-name">Security Controls</span>
                                     </span>
-                                    <h4>Security Controls</h4>
                                 </div>
                                 <p class="project-description">Implementation of VPC security controls and best practices</p>
                                 <div class="project-footer">
@@ -1634,10 +1653,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0104
+                                        <span class="code-number">0104</span>
+                                        <span class="code-name">Connecting to On-Premises</span>
                                     </span>
-                                    <h4>Connecting to On-Premises</h4>
                                 </div>
                                 <p class="project-description">Hybrid connectivity setup with on-premises infrastructure</p>
                                 <div class="project-footer">
@@ -1652,10 +1670,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0105
+                                        <span class="code-number">0105</span>
+                                        <span class="code-name">Networking Monitoring</span>
                                     </span>
-                                    <h4>Networking Monitoring</h4>
                                 </div>
                                 <p class="project-description">VPC monitoring and observability implementation</p>
                                 <div class="project-footer">
@@ -1670,10 +1687,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0106
+                                        <span class="code-number">0106</span>
+                                        <span class="code-name">AWS Gateway Load Balancer</span>
                                     </span>
-                                    <h4>AWS Gateway Load Balancer</h4>
                                 </div>
                                 <p class="project-description">Implementation of Gateway Load Balancer for network traffic management</p>
                                 <div class="project-footer">
@@ -1688,10 +1704,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0107
+                                        <span class="code-number">0107</span>
+                                        <span class="code-name">AWS Transit Gateway Multicast</span>
                                     </span>
-                                    <h4>AWS Transit Gateway Multicast</h4>
                                 </div>
                                 <p class="project-description">Setup of Transit Gateway with multicast functionality</p>
                                 <div class="project-footer">
@@ -1706,10 +1721,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0108
+                                        <span class="code-number">0108</span>
+                                        <span class="code-name">AWS VPC with private only subnets</span>
                                     </span>
-                                    <h4>AWS VPC with private only subnets</h4>
                                 </div>
                                 <p class="project-description">VPC configuration with private subnet architecture</p>
                                 <div class="project-footer">
@@ -1724,10 +1738,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0109
+                                        <span class="code-number">0109</span>
+                                        <span class="code-name">AWS VPC with public and private subnets</span>
                                     </span>
-                                    <h4>AWS VPC with public and private subnets</h4>
                                 </div>
                                 <p class="project-description">VPC setup with both public and private subnet architecture</p>
                                 <div class="project-footer">
@@ -1738,13 +1751,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="expand-btn">
-                            <span class="expand-text">Show More</span>
-                            <span class="collapse-text">Show Less</span>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -1762,15 +1768,14 @@
                                 AWS Glue Immersion Day
                             </h5>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 0201 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0201
+                                        <span class="code-number">0201</span>
+                                        <span class="code-name">Working with Glue Data Catalog</span>
                                     </span>
-                                    <h4>Working with Glue Data Catalog</h4>
                                 </div>
                                 <p class="project-description">Implementation of AWS Glue Data Catalog for metadata management</p>
                                 <div class="project-footer">
@@ -1785,10 +1790,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0202
+                                        <span class="code-number">0202</span>
+                                        <span class="code-name">Working with Apache Spark</span>
                                     </span>
-                                    <h4>Working with Apache Spark</h4>
                                 </div>
                                 <p class="project-description">Apache Spark integration with AWS Glue for data processing</p>
                                 <div class="project-footer">
@@ -1803,10 +1807,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0203
+                                        <span class="code-number">0203</span>
+                                        <span class="code-name">Working with Glue ETL</span>
                                     </span>
-                                    <h4>Working with Glue ETL</h4>
                                 </div>
                                 <p class="project-description">Implementation of ETL jobs using AWS Glue</p>
                                 <div class="project-footer">
@@ -1821,10 +1824,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0204
+                                        <span class="code-number">0204</span>
+                                        <span class="code-name">Working with Glue Streaming</span>
                                     </span>
-                                    <h4>Working with Glue Streaming</h4>
                                 </div>
                                 <p class="project-description">Real-time data processing with AWS Glue Streaming</p>
                                 <div class="project-footer">
@@ -1839,10 +1841,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0205
+                                        <span class="code-number">0205</span>
+                                        <span class="code-name">Monitoring, Troubleshooting and Scaling</span>
                                     </span>
-                                    <h4>Monitoring, Troubleshooting and Scaling</h4>
                                 </div>
                                 <p class="project-description">Implementing monitoring and scaling solutions for Glue jobs</p>
                                 <div class="project-footer">
@@ -1857,10 +1858,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0206
+                                        <span class="code-number">0206</span>
+                                        <span class="code-name">Glue Job Orchestration</span>
                                     </span>
-                                    <h4>Glue Job Orchestration</h4>
                                 </div>
                                 <p class="project-description">Orchestrating Glue jobs using AWS services</p>
                                 <div class="project-footer">
@@ -1875,10 +1875,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0207
+                                        <span class="code-number">0207</span>
+                                        <span class="code-name">Working with Glue Data Quality</span>
                                     </span>
-                                    <h4>Working with Glue Data Quality</h4>
                                 </div>
                                 <p class="project-description">Implementing data quality checks using AWS Glue</p>
                                 <div class="project-footer">
@@ -1893,10 +1892,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0208
+                                        <span class="code-number">0208</span>
+                                        <span class="code-name">Working with Glue Databrew</span>
                                     </span>
-                                    <h4>Working with Glue Databrew</h4>
                                 </div>
                                 <p class="project-description">Data preparation using AWS Glue DataBrew</p>
                                 <div class="project-footer">
@@ -1907,29 +1905,25 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="expand-btn">
-                            <span class="expand-text">Show More</span>
-                            <span class="collapse-text">Show Less</span>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
                     </div>
                     <div class="project-category redshift-section">
+                        <!-- Redshift Section -->
                         <div class="section-header">
-                            <h5>
-                                AWS Redshift Immersion Day
-                            </h5>
+                            <h5>AWS Redshift Immersion Day</h5>
+                            <div class="service-icon-wrapper">
+                                <img src="https://raw.githubusercontent.com/awsicons/awsicons/master/Architecture-Service-Icons/Analytics/Amazon-Redshift.svg" 
+                                     alt="Amazon Redshift" 
+                                     class="service-icon">
+                            </div>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 0901 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0901
+                                        <span class="code-number">0901</span>
+                                        <span class="code-name">Getting Started with Redshift</span>
                                     </span>
-                                    <h4>Getting Started with Redshift</h4>
                                 </div>
                                 <p class="project-description">Initial setup and configuration of Amazon Redshift</p>
                                 <div class="project-footer">
@@ -1944,10 +1938,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0902
+                                        <span class="code-number">0902</span>
+                                        <span class="code-name">Table Design and Load</span>
                                     </span>
-                                    <h4>Table Design and Load</h4>
                                 </div>
                                 <p class="project-description">Implementation of table design patterns and data loading strategies</p>
                                 <div class="project-footer">
@@ -1962,10 +1955,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0903
+                                        <span class="code-number">0903</span>
+                                        <span class="code-name">Ongoing Load-ELT</span>
                                     </span>
-                                    <h4>Ongoing Load-ELT</h4>
                                 </div>
                                 <p class="project-description">Implementation of ELT processes for continuous data loading</p>
                                 <div class="project-footer">
@@ -1980,10 +1972,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0904
+                                        <span class="code-number">0904</span>
+                                        <span class="code-name">Data Sharing</span>
                                     </span>
-                                    <h4>Data Sharing</h4>
                                 </div>
                                 <p class="project-description">Setup and configuration of Redshift data sharing capabilities</p>
                                 <div class="project-footer">
@@ -1998,10 +1989,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0905
+                                        <span class="code-number">0905</span>
+                                        <span class="code-name">Machine Learning-Redshift ML</span>
                                     </span>
-                                    <h4>Machine Learning-Redshift ML</h4>
                                 </div>
                                 <p class="project-description">Implementation of machine learning capabilities using Redshift ML</p>
                                 <div class="project-footer">
@@ -2016,10 +2006,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0906
+                                        <span class="code-number">0906</span>
+                                        <span class="code-name">Query Data Lake-Redshift Spectrum</span>
                                     </span>
-                                    <h4>Query Data Lake-Redshift Spectrum</h4>
                                 </div>
                                 <p class="project-description">Implementation of Redshift Spectrum for data lake querying</p>
                                 <div class="project-footer">
@@ -2034,10 +2023,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0907
+                                        <span class="code-number">0907</span>
+                                        <span class="code-name">Operations</span>
                                     </span>
-                                    <h4>Operations</h4>
                                 </div>
                                 <p class="project-description">Implementation of operational best practices and maintenance procedures</p>
                                 <div class="project-footer">
@@ -2048,13 +2036,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="expand-btn">
-                            <span class="expand-text">Show More</span>
-                            <span class="collapse-text">Show Less</span>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
                     </div>
                     <div class="project-category athena-section">
                         <div class="section-header">
@@ -2062,15 +2043,14 @@
                                 Athena Immersion Day
                             </h5>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 1001 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1001
+                                        <span class="code-number">1001</span>
+                                        <span class="code-name">Athena Basics🔥</span>
                                     </span>
-                                    <h4>Athena Basics🔥</h4>
                                 </div>
                                 <p class="project-description">Getting started with Amazon Athena</p>
                                 <div class="project-footer">
@@ -2085,10 +2065,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1002
+                                        <span class="code-number">1002</span>
+                                        <span class="code-name">Athena Federation</span>
                                     </span>
-                                    <h4>Athena Federation</h4>
                                 </div>
                                 <p class="project-description">Federating data sources with Amazon Athena</p>
                                 <div class="project-footer">
@@ -2103,10 +2082,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1003
+                                        <span class="code-number">1003</span>
+                                        <span class="code-name">User Defined Functions</span>
                                     </span>
-                                    <h4>User Defined Functions</h4>
                                 </div>
                                 <p class="project-description">Creating and using custom functions in Athena</p>
                                 <div class="project-footer">
@@ -2121,10 +2099,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1004
+                                        <span class="code-number">1004</span>
+                                        <span class="code-name">Custom Data Source Connector</span>
                                     </span>
-                                    <h4>Custom Data Source Connector</h4>
                                 </div>
                                 <p class="project-description">Building a custom data source connector for Athena</p>
                                 <div class="project-footer">
@@ -2139,10 +2116,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1005
+                                        <span class="code-number">1005</span>
+                                        <span class="code-name">Test Analysis using UDF</span>
                                     </span>
-                                    <h4>Test Analysis using UDF</h4>
                                 </div>
                                 <p class="project-description">Analyzing test data using user-defined functions in Athena</p>
                                 <div class="project-footer">
@@ -2157,10 +2133,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1006
+                                        <span class="code-number">1006</span>
+                                        <span class="code-name">Machine Learning</span>
                                     </span>
-                                    <h4>Machine Learning</h4>
                                 </div>
                                 <p class="project-description">Implementing machine learning models with Athena</p>
                                 <div class="project-footer">
@@ -2175,10 +2150,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1007
+                                        <span class="code-number">1007</span>
+                                        <span class="code-name">ACID Transactions with Iceberg</span>
                                     </span>
-                                    <h4>ACID Transactions with Iceberg</h4>
                                 </div>
                                 <p class="project-description">Implementing ACID transactions with Iceberg in Athena</p>
                                 <div class="project-footer">
@@ -2193,10 +2167,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1008
+                                        <span class="code-number">1008</span>
+                                        <span class="code-name">Athena Spark</span>
                                     </span>
-                                    <h4>Athena Spark</h4>
                                 </div>
                                 <p class="project-description">Using Apache Spark with Amazon Athena</p>
                                 <div class="project-footer">
@@ -2207,13 +2180,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="expand-btn">
-                            <span class="expand-text">Show More</span>
-                            <span class="collapse-text">Show Less</span>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -2227,19 +2193,18 @@
                 <div class="tree-content">
                     <div class="project-category lambda-section">
                         <div class="section-header">
-                            <h4>
+                            <h5>
                                 AWS Serverless Immersion Day
-                            </h4>
+                            </h5>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 0301 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0301
+                                        <span class="code-number">0301</span>
+                                        <span class="code-name">Introduction to Serverless 🔥𝟙</span>
                                     </span>
-                                    <h4>Introduction to Serverless 🔥𝟙</h4>
                                 </div>
                                 <p class="project-description">Getting started with AWS Lambda and serverless architecture</p>
                                 <div class="project-footer">
@@ -2254,10 +2219,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0302
+                                        <span class="code-number">0302</span>
+                                        <span class="code-name">Synchronous Invocation</span>
                                     </span>
-                                    <h4>Synchronous Invocation</h4>
                                 </div>
                                 <p class="project-description">Implementation of synchronous Lambda function invocations</p>
                                 <div class="project-footer">
@@ -2272,10 +2236,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0303
+                                        <span class="code-number">0303</span>
+                                        <span class="code-name">Synchronous + Idempotence</span>
                                     </span>
-                                    <h4>Synchronous + Idempotence</h4>
                                 </div>
                                 <p class="project-description">Implementing idempotent synchronous Lambda functions</p>
                                 <div class="project-footer">
@@ -2290,10 +2253,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0304
+                                        <span class="code-number">0304</span>
+                                        <span class="code-name">Asynchronous Invocation</span>
                                     </span>
-                                    <h4>Asynchronous Invocation</h4>
                                 </div>
                                 <p class="project-description">Implementation of asynchronous Lambda function invocations</p>
                                 <div class="project-footer">
@@ -2308,10 +2270,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0305
+                                        <span class="code-number">0305</span>
+                                        <span class="code-name">Polling</span>
                                     </span>
-                                    <h4>Polling</h4>
                                 </div>
                                 <p class="project-description">Implementation of Lambda function polling patterns</p>
                                 <div class="project-footer">
@@ -2326,10 +2287,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0306
+                                        <span class="code-number">0306</span>
+                                        <span class="code-name">Deep Dive</span>
                                     </span>
-                                    <h4>Deep Dive</h4>
                                 </div>
                                 <p class="project-description">Advanced concepts and best practices in Lambda</p>
                                 <div class="project-footer">
@@ -2340,27 +2300,19 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="expand-btn">
-                            <span class="expand-text">Show More</span>
-                            <span class="collapse-text">Show Less</span>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
                     </div>
                     <div class="project-category stepfunctions-section">
                         <div class="section-header">
                             <h5>AWS Step Functions Immersion Day</h5>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 0401 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0401
+                                        <span class="code-number">0401</span>
+                                        <span class="code-name">Request Response</span>
                                     </span>
-                                    <h4>Request Response</h4>
                                 </div>
                                 <p class="project-description">Implementation of request-response patterns in Step Functions</p>
                                 <div class="project-footer">
@@ -2375,10 +2327,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0402
+                                        <span class="code-number">0402</span>
+                                        <span class="code-name">Execute Asynchronous Task</span>
                                     </span>
-                                    <h4>Execute Asynchronous Task</h4>
                                 </div>
                                 <p class="project-description">Implementation of asynchronous task execution patterns</p>
                                 <div class="project-footer">
@@ -2393,10 +2344,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0403
+                                        <span class="code-number">0403</span>
+                                        <span class="code-name">Execute Synchronous Task</span>
                                     </span>
-                                    <h4>Execute Synchronous Task</h4>
                                 </div>
                                 <p class="project-description">Implementation of synchronous task execution patterns</p>
                                 <div class="project-footer">
@@ -2411,10 +2361,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0404
+                                        <span class="code-number">0404</span>
+                                        <span class="code-name">Asynchronous Invocation</span>
                                     </span>
-                                    <h4>Asynchronous Invocation</h4>
                                 </div>
                                 <p class="project-description">Implementation of asynchronous invocation patterns</p>
                                 <div class="project-footer">
@@ -2429,10 +2378,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0405
+                                        <span class="code-number">0405</span>
+                                        <span class="code-name">Callback with Task Token</span>
                                     </span>
-                                    <h4>Callback with Task Token</h4>
                                 </div>
                                 <p class="project-description">Implementation of callback patterns using task tokens</p>
                                 <div class="project-footer">
@@ -2447,10 +2395,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0406
+                                        <span class="code-number">0406</span>
+                                        <span class="code-name">Choice and Map State</span>
                                     </span>
-                                    <h4>Choice and Map State</h4>
                                 </div>
                                 <p class="project-description">Implementation of choice and map state patterns</p>
                                 <div class="project-footer">
@@ -2465,10 +2412,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0407
+                                        <span class="code-number">0407</span>
+                                        <span class="code-name">Parallel State</span>
                                     </span>
-                                    <h4>Parallel State</h4>
                                 </div>
                                 <p class="project-description">Implementation of parallel state execution patterns</p>
                                 <div class="project-footer">
@@ -2483,10 +2429,9 @@
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        0408
+                                        <span class="code-number">0408</span>
+                                        <span class="code-name">Input and Output Processing</span>
                                     </span>
-                                    <h4>Input and Output Processing</h4>
                                 </div>
                                 <p class="project-description">Implementation of input and output processing patterns</p>
                                 <div class="project-footer">
@@ -2497,27 +2442,19 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="expand-btn">
-                            <span class="expand-text">Show More</span>
-                            <span class="collapse-text">Show Less</span>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
                     </div>
                     <div class="project-category apigateway-section">
                         <div class="section-header">
                             <h5>AWS API Gateway Immersion Day</h5>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 1101 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1101
+                                        <span class="code-number">1101</span>
+                                        <span class="code-name">API Gateway Basics 🔥</span>
                                     </span>
-                                    <h4>API Gateway Basics 🔥</h4>
                                 </div>
                                 <p class="project-description">Getting started with Amazon API Gateway fundamentals</p>
                                 <div class="project-footer">
@@ -2533,15 +2470,14 @@
                         <div class="section-header">
                             <h5>AWS DynamoDB Immersion Day</h5>
                         </div>
-                        <div class="project-grid collapsed">
+                        <div class="project-grid">
                             <!-- Project 1201 -->
                             <div class="project-card">
                                 <div class="project-meta">
                                     <span class="project-code">
-                                        <span class="code-label">Project</span>
-                                        1201
+                                        <span class="code-number">1201</span>
+                                        <span class="code-name">DynamoDB Basics</span>
                                     </span>
-                                    <h4>DynamoDB Basics</h4>
                                 </div>
                                 <p class="project-description">Getting started with Amazon DynamoDB fundamentals and best practices</p>
                                 <div class="project-footer">
@@ -2621,5 +2557,4 @@
         });
     </script>
 </body>
-</html> 
 </html> 
